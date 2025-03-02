@@ -1,59 +1,68 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { signInUser, googleLoginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-      //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const navigate = useNavigate();
-  //   const provider = new GoogleAuthProvider();
+    try {
+      await signInUser(email, password);
 
-  //   const handleLogin = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       await signInWithEmailAndPassword(auth, email, password);
-  //       toast.success("Login successful!");
-  //       navigate("/");
-  //     } catch (error) {
-  //       toast.error("Invalid email or password. Please try again.");
-  //     }
-  //   };
+      toast.success("Login successful!");
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Invalid email or password. Please try again.");
+    }
+  };
 
-  //   const handleGoogleLogin = async () => {
-  //     try {
-  //       await signInWithPopup(auth, provider);
-  //       toast.success("Login successful with Google!");
-  //       navigate("/");
-  //     } catch (error) {
-  //       toast.error("Google login failed. Please try again.");
-  //     }
-  //   };
+  const handleGoogleLogin = async () => {
+    try {
+      const googleLogin = await googleLoginUser();
+      console.log(googleLogin.user.photoURL);
+      toast.success("Login successful with Google!");
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center py-10">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <form>
+        <form onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
             className="w-full p-2 mb-2 border rounded"
+            name="email"
             required
           />
           <input
             type="password"
             placeholder="Password"
             className="w-full p-2 mb-2 border rounded"
+            name="password"
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded"
+            className="w-full bg-blue-500 text-white p-2 cursor-pointer rounded"
           >
             Login
           </button>
         </form>
         <button
-          className="w-full bg-red-500 text-white p-2 rounded mt-2"
+          onClick={handleGoogleLogin}
+          className="w-full bg-red-500 text-white p-2 cursor-pointer rounded mt-2"
         >
           Login with Google
         </button>

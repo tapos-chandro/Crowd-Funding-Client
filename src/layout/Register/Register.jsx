@@ -15,7 +15,6 @@ const Register = () => {
     const photoURL = form.photo.value;
     const password = form.password.value;
 
-    console.log(name, email, password,)
     const passwordLength = /(?=.{6,})/;
     const passwordRegexUpperCase = /(?=.*[A-Z])/;
     const passwordRegexLowerCase = /(?=.*[a-z])/;
@@ -31,22 +30,15 @@ const Register = () => {
     }
 
     try {
+      await registerNewUser(email, password);
 
-      const userCredential = await registerNewUser(email, password);
-      // await updateProfil(userCredential.user, { displayName: name, photoURL });
-    //   console.log(userCredential);
-    console.log(userCredential.user.displayName)
+      await updateUserProfile(name, photoURL);
 
-       const updateUser =  await updateUserProfile(name , photoURL)
-       console.log(updateUser, 'update user')
-    
       toast.success("Registration successful!");
       navigate("/login");
     } catch (error) {
       toast.error(error.message);
     }
-
-
   };
 
   return (
@@ -57,7 +49,6 @@ const Register = () => {
           <input
             type="text"
             placeholder="Name"
-            // value={name}
             name="name"
             className="w-full p-2 mb-2 border rounded"
             required
@@ -65,7 +56,6 @@ const Register = () => {
           <input
             type="email"
             placeholder="Email"
-            // value={email}
             name="email"
             className="w-full p-2 mb-2 border rounded"
             required
@@ -73,21 +63,19 @@ const Register = () => {
           <input
             type="text"
             placeholder="Photo URL"
-            // value={photoURL}
             name="photo"
             className="w-full p-2 mb-2 border rounded"
           />
           <input
             type="password"
             placeholder="Password"
-            // value={password}
             name="password"
             className="w-full p-2 mb-2 border rounded"
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded"
+            className="w-full bg-blue-500 text-white p-2 rounded hover:cursor-pointer"
           >
             Register
           </button>
