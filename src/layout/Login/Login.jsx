@@ -2,6 +2,31 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
+      //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+  //   const navigate = useNavigate();
+  //   const provider = new GoogleAuthProvider();
+
+  //   const handleLogin = async (e) => {
+  //     e.preventDefault();
+  //     try {
+  //       await signInWithEmailAndPassword(auth, email, password);
+  //       toast.success("Login successful!");
+  //       navigate("/");
+  //     } catch (error) {
+  //       toast.error("Invalid email or password. Please try again.");
+  //     }
+  //   };
+
+  //   const handleGoogleLogin = async () => {
+  //     try {
+  //       await signInWithPopup(auth, provider);
+  //       toast.success("Login successful with Google!");
+  //       navigate("/");
+  //     } catch (error) {
+  //       toast.error("Google login failed. Please try again.");
+  //     }
+  //   };
 
   return (
     <div className="flex justify-center items-center py-10">
