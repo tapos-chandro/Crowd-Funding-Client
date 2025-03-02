@@ -43,16 +43,17 @@ const Navbar = () => {
               <Link to="/register" className="bg-blue-800 text-white px-4 py-2 rounded-lg">Register</Link>
             </>
           ) : (
-            <div className="relative group">
+            <div className="relative group flex ">
               <img
-                src={user.photoURL || "/default-avatar.png"}
+                src={user.photoURL }
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full cursor-pointer"
               />
               <div className="absolute hidden group-hover:block bg-white text-black px-4 py-2 rounded shadow-md top-12 left-0">
-                {user.displayName || "User"}
+                <p>{user.displayName || "User"}</p>
+                <p>{user.email || "Email"}</p>
               </div>
-              <button onClick={logout} className="ml-4 bg-red-500 text-white px-4 py-2 rounded-lg">Log out</button>
+              <button onClick={logout} className="ml-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:cursor-pointer">Log out</button>
             </div>
           )}
         </div>
@@ -60,7 +61,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-blue-700 p-4 mt-2 rounded">
+        <div className="md:hidden bg-blue-700 p-4 mt-2 rounded text-center">
           <NavLink to="/" className="block text-white py-2">Home</NavLink>
           <NavLink to="/all-campaigns" className="block text-white py-2">All Campaigns</NavLink>
 
@@ -78,9 +79,17 @@ const Navbar = () => {
               <Link to="/register" className="block bg-blue-800 text-white px-4 py-2 rounded-lg mt-2">Register</Link>
             </>
           ) : (
-            <button onClick={logout} className="block w-full bg-red-500 text-white px-4 py-2 rounded-lg mt-2">
-              Log out
-            </button>
+            <div className="relative group  flex flex-col justify-center items-center   space-y-2">
+              <img
+                src={user.photoURL || "/default-avatar.png"}
+                alt="User Avatar"
+                className="w-10 h-10 rounded-full cursor-pointer"
+              />
+              <div className="absolute hidden group-hover:block bg-white text-black px-4 py-2 rounded shadow-md top-12 left-0">
+                {user.displayName || "User"}
+              </div>
+              <button onClick={logout} className=" bg-red-500 text-white  w-full py-2 rounded-lg">Log out</button>
+            </div>
           )}
         </div>
       )}
