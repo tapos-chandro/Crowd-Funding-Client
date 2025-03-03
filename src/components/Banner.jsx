@@ -33,9 +33,6 @@ const Banner = () => {
   
 
 
-
-
-
   return (
     <Swiper
       spaceBetween={30}
@@ -60,7 +57,7 @@ const Banner = () => {
           />
           <div className=" absolute top-0 h-full flex justify-center flex-col items-center  w-full   p-5 bg-[#000000a5]">
             <div className="max-w-4xl text-center space-y-2">
-              <h2 className="lg:text-6xl text-xl text-white  ">
+              <h2 className="lg:text-6xl font-bold text-xl text-white  ">
                
                 <Typewriter words={[banner.title]} loop={true} cursor  />
               </h2>

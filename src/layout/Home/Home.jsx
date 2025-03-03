@@ -1,11 +1,13 @@
 import Banner from "../../components/Banner";
+import RunningCampaigns from "../../components/RunningCampaigns";
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, ullam.</h1>
+            <RunningCampaigns></RunningCampaigns>
+            
         </div>
     );
 };
