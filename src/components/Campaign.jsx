@@ -1,5 +1,5 @@
 const Campaign = ({ campaign }) => {
-  const { title, description, image, raised, goal, deadline } = campaign;
+  const { title, description, image, raised, goal } = campaign;
 
   return (
     <div className="card bg-base-100 rounded-none  shadow-sm grow">

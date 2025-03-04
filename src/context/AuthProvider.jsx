@@ -26,10 +26,12 @@ const AuthProvider = ({children}) => {
     }
 
     const signInUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const googleLoginUser = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
@@ -45,6 +47,7 @@ const AuthProvider = ({children}) => {
                 setLoading(false)
             }else{
                 setUser(null)
+                setLoading(false)
             }
             return () =>  {
                 unsubscribe ()
