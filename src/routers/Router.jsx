@@ -7,6 +7,8 @@ import AddCampaign from "../layout/AddCampaign/AddCampaign";
 import PrivetRouter from "./PrivetRouter";
 import MyCampaigns from "../layout/MyCampaign/MyCampaigns";
 import MyDonations from "../layout/MyDonations/MyDonations";
+import AllCampaigns from "../layout/AllCampaigns/AllCampaigns";
+import UpdateCampaign from "../layout/UpdateCampaign/UpdateCampaign";
 
 
 export  const router = createBrowserRouter([
@@ -33,12 +35,17 @@ export  const router = createBrowserRouter([
             ,
             {
                 path:'my-campaigns',
-                element:<MyCampaigns></MyCampaigns>
+                element:<PrivetRouter><MyCampaigns></MyCampaigns></PrivetRouter>
             }
             ,
             {
                 path:'my-donations',
                 element:<PrivetRouter><MyDonations></MyDonations></PrivetRouter>
+            }
+            ,
+            {
+                path:'updateCampaign/:id',
+                element:<PrivetRouter><UpdateCampaign></UpdateCampaign></PrivetRouter>
             }
         ]
     }
