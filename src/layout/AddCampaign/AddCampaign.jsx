@@ -1,6 +1,7 @@
 import React, { useContext} from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 
 const AddCampaign = () => {
@@ -34,7 +35,14 @@ const time = moment().format('LT')
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      if(data.acknowledged){
+        Swal.fire({
+          title: "Successfully added",
+          text: "You clicked the button!",
+          icon: "success"
+        });
+        form.reset()
+      }
     })
   };
 
@@ -101,7 +109,7 @@ const time = moment().format('LT')
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 hover:cursor-pointer"
         >
           Add Now
         </button>

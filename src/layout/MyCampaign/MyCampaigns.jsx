@@ -1,28 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const MyCampaigns = () => {
   const navigate = useNavigate();
-  const [campaigns, setCampaigns] = useState([
-    {
-      id: 1,
-      title: "Save the Rainforest",
-      type: "Environmental",
-      minDonation: 50,
-    },
-    {
-      id: 2,
-      title: "New Startup Fund",
-      type: "Business",
-      minDonation: 100,
-    },
-    {
-      id: 3,
-      title: "Artistic Innovation",
-      type: "Creative Ideas",
-      minDonation: 20,
-    },
-  ]);
+  const {user} = useContext(AuthContext)
+  const [campaigns, setCampaigns] = useState([]);
 
   const handleUpdate = (id) => {
     navigate(`/updateCampaign/${id}`);
@@ -34,6 +17,14 @@ const MyCampaigns = () => {
     }
   };
 
+
+  useEffect( () => {
+    fetch(`http://localhost:5000/myCampaign/${user.email}`)
+    .then(res => res.json())
+    .then(data => setCampaigns(data))
+
+  }, [])
+
   return (
     <div className="container mx-auto p-5">
       <h2 className="text-3xl font-semibold mb-6">My Campaigns</h2>
@@ -43,13 +34,13 @@ const MyCampaigns = () => {
             <tr className="bg-gray-200">
               <th className="border p-3">Title</th>
               <th className="border p-3">Type</th>
-              <th className="border p-3">Minimum Donation</th>
+              <th className="border p-3">Donation</th>
               <th className="border p-3">Actions</th>
             </tr>
           </thead>
           <tbody>
             {campaigns.map((campaign) => (
-              <tr key={campaign.id} className="text-center hover:bg-gray-100">
+              <tr key={campaign._id} className="text-center hover:bg-gray-100">
                 <td className="border p-3">{campaign.title}</td>
                 <td className="border p-3 capitalize">{campaign.type}</td>
                 <td className="border p-3">${campaign.minDonation}</td>
