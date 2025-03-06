@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCampaigns = () => {
   const navigate = useNavigate();
@@ -12,9 +13,46 @@ const MyCampaigns = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this campaign?")) {
-      setCampaigns(campaigns.filter((campaign) => campaign.id !== id));
-    }
+    console.log(id)
+
+      try {
+        
+
+        
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
+        fetch(`http://localhost:5000/delete/${id}`, {
+          method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.deletedCount > 0){
+            Swal.fire({
+              title: "Successfully Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        })
+
+      }
+    });
+
+
+      } catch (error) {
+        console.log(error.message)
+      }
+
+
   };
 
 
@@ -47,14 +85,14 @@ const MyCampaigns = () => {
                 <td className="border text-center p-3 space-y-2 lg:space-x-2">
                   
                 <button
-                    onClick={() => handleUpdate(campaign.id)}
+                    onClick={() => handleUpdate(campaign?._id)}
                     className="bg-green-600 text-white px-4  py-2 h-full rounded hover:bg-green-700"
                   >
                     Update
                   </button>
 
                   <button
-                    onClick={() => handleDelete(campaign.id)}
+                    onClick={() => handleDelete(campaign?._id)}
                     className="bg-red-600 text-white px-4 py-2  rounded hover:bg-red-700"
                   >
                     Delete
