@@ -17,7 +17,7 @@ const JoinCommunity = () => {
 
     return (
         
-        <section className="py-16  bg-gray-100 text-center mt-10">
+        <section className="py-16   my-10 text-center mt-10">
         <div className="max-w-4xl mx-auto px-5">
           <h2 className="text-3xl lg:text-5xl font-bold">Join Our Community</h2>
           <p className="mt-4 text-lg lg:text-xl">

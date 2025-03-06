@@ -19,7 +19,7 @@ const Campaign = ({ campaign }) => {
         <p>{description}</p>
         <p>Price: ${minDonation}</p>
         <div className="card-actions justify-between">
-          <Link to={`/details/${_id}`} className="w-full"><button  className="btn btn-primary w-full">See More...</button></Link>
+          <Link to={`/details/${_id}`} className="w-full"><button  className="btn bg-blue-600 text-white w-full">See More...</button></Link>
         </div>
       </div>
     </div>

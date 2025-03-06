@@ -17,7 +17,7 @@ const MyDonations = () => {
   }, [])
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 py-28">
       <h1 className="text-2xl font-bold mb-4 text-center">My Donated Campaigns</h1>
 
       {loading ? (

@@ -64,9 +64,9 @@ const MyCampaigns = () => {
   }, [])
 
   return (
-    <div className="container mx-auto p-5">
-      <h2 className="text-3xl font-semibold mb-6">My Campaigns</h2>
-      <div className="overflow-x-auto">
+    <div className="container mx-auto p-5 py-28">
+      <h2 className="text-3xl font-semibold mb-6 text-center">My Campaigns</h2>
+      {campaigns.length > 0 ?<div className="overflow-x-auto">
         <table className="w-full border-collapse ">
           <thead>
             <tr className="bg-gray-200">
@@ -99,20 +99,11 @@ const MyCampaigns = () => {
                   </button>
 
                 </td>
-                {/* <td className="border p-3 space-x-3 flex items-center justify-center ">
-                
-                  <button
-                    onClick={() => handleDelete(campaign.id)}
-                    className="bg-red-600 text-white px-4 py-2  rounded hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+      </div> : <p className="text-center">You haven't your to any campaigns yet.</p>}
     </div>
   );
 };

@@ -61,7 +61,7 @@ const Testimonials = () => {
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>
             <div
-              className={`card max-w-xl border-2 border-amber-300 mx-auto shadow-lg p-6 text-center rounded-lg flex flex-col justify-center items-center `}
+              className={`card max-w-xl border-2 border-blue-600 mx-auto shadow-lg p-6 text-center rounded-lg flex flex-col justify-center items-center `}
             >
               <div className="w-40 h-40 flex justify-center ">
                 <img

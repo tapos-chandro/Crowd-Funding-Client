@@ -10,12 +10,14 @@ import MyDonations from "../layout/MyDonations/MyDonations";
 import AllCampaigns from "../layout/AllCampaigns/AllCampaigns";
 import UpdateCampaign from "../layout/UpdateCampaign/UpdateCampaign";
 import Details from "../layout/Details/Details";
+import NotFound from "../layout/NotFound/NotFound";
 
 
 export  const router = createBrowserRouter([
     {
         path:'/',
         element:<Root></Root>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: '/',

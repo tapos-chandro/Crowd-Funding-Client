@@ -47,8 +47,8 @@ const time = moment().format('LT')
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white rounded shadow-md mt-10">
-      <h2 className="text-2xl font-semibold mb-4">Add New Campaign</h2>
+    <div className="max-w-lg mx-auto p-6 bg-white rounded shadow-md mt-20">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Add New Campaign</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"

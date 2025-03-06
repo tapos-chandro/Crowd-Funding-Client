@@ -6,13 +6,10 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false); // State for mobile menu
 
-  // const handleLogout = () => {
-    
-  // }
 
   return (
-    <nav className="bg-blue-600 p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-blue-600 p-4 shadow-md fixed top-0 z-50 w-full py-5">
+      <div className="container mx-auto flex justify-between items-center  ">
         
         {/* Logo */}
         <Link to="/" className="text-white text-xl font-bold">Crowdfund</Link>

@@ -10,11 +10,7 @@ const Details = () => {
   const navigate = useNavigate()
   // _id,image,title,type,description,minDonation,deadline
 
-  useEffect(() => {
-    fetch(`https://crowd-funding-server-iota.vercel.app/details/${id}`)
-      .then((res) => res.json())
-      .then((data) => setDetails(data));
-  }, []);
+
 
   const handleDonate = (id) => {
     console.log(id);
@@ -51,8 +47,15 @@ const Details = () => {
     })
   };
 
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/details/${id}`)
+      .then((res) => res.json())
+      .then((data) => setDetails(data));
+  }, []);
+
   return (
-    <div className="container mx-auto flex justify-center py-10 md:py-20 px-5">
+    <div className="container mx-auto flex justify-center py-20 mt-10 md:py-20 px-5">
       <div className="card bg-base-100 md:w-1/2 shadow-sm">
         <figure>
           <img src={details?.image} alt={details?.title} className="w-full" />
@@ -65,7 +68,7 @@ const Details = () => {
           <div className="card-actions">
             <button
               onClick={() => handleDonate(details?._id)}
-              className="btn btn-primary w-full"
+              className="btn bg-blue-600 text-white text-lg w-full"
             >
               Donate
             </button>

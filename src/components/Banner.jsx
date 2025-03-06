@@ -55,7 +55,7 @@ const Banner = () => {
             alt={banner.title}
             className="w-full lg:max-h-[90vh] object-cover "
           />
-          <div className=" absolute top-0 h-full flex justify-center flex-col items-center  w-full   p-5 bg-[#000000a5]">
+          <div className=" absolute top-0 h-full flex justify-center flex-col items-center  w-full   p-5 bg-[#000000a5] ">
             <div className="max-w-4xl text-center space-y-2">
               <h2 className="lg:text-6xl font-bold text-xl text-white  ">
                

@@ -7,7 +7,7 @@ import Testimonials from "../../components/Testimonials";
 
 const Home = () => {
     return (
-        <div>
+        <div className="pt-16">
             <Banner></Banner>
             <RunningCampaigns></RunningCampaigns>
             <Testimonials></Testimonials>
