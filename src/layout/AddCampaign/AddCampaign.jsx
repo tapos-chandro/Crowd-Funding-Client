@@ -1,26 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext} from "react";
+import { AuthContext } from "../../context/AuthProvider";
+import moment from "moment";
+
 
 const AddCampaign = () => {
-  const [campaign, setCampaign] = useState({
-    image: "",
-    title: "",
-    type: "personal issue",
-    description: "",
-    minDonation: "",
-    deadline: "",
-  });
+  const {user} = useContext(AuthContext)
 
-  const userEmail = "user@example.com"; // Replace with actual user data
-  const userName = "John Doe"; // Replace with actual user data
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCampaign({ ...campaign, [name]: value });
-  };
+const time = moment().format('LT')
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Campaign Data:", campaign);
+    const form = e.target;
+    const name = form.name.value;
+    const title = form.title.value;
+    const type = form.type.value;
+    const description = form.description.value;
+    const minDonation = form.minDonation.value;
+    const deadline = form.deadline.value;
+    const email = form.email.value;
+    const campaign = {name, title, type, description, minDonation, deadline,email,time}
+    
+
+
+
+    fetch('http://localhost:5000/campaign', {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(campaign)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
   };
 
   return (
@@ -31,8 +46,6 @@ const AddCampaign = () => {
           type="text"
           name="image"
           placeholder="Image URL"
-          value={campaign.image}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
           required
         />
@@ -40,17 +53,14 @@ const AddCampaign = () => {
           type="text"
           name="title"
           placeholder="Campaign Title"
-          value={campaign.title}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
           required
         />
         <select
           name="type"
-          value={campaign.type}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
         >
+          <option value="personal issue">Select</option>
           <option value="personal issue">Personal Issue</option>
           <option value="startup">Startup</option>
           <option value="business">Business</option>
@@ -59,8 +69,6 @@ const AddCampaign = () => {
         <textarea
           name="description"
           placeholder="Description"
-          value={campaign.description}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
           required
         ></textarea>
@@ -68,30 +76,28 @@ const AddCampaign = () => {
           type="number"
           name="minDonation"
           placeholder="Minimum Donation Amount"
-          value={campaign.minDonation}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
           required
         />
         <input
           type="date"
           name="deadline"
-          value={campaign.deadline}
-          onChange={handleChange}
           className="w-full p-2 border rounded"
           required
         />
         <input
           type="email"
-          value={userEmail}
+          value={user?.email}
+          name="email"
           className="w-full p-2 border rounded bg-gray-200 cursor-not-allowed"
           readOnly
         />
         <input
           type="text"
-          value={userName}
           className="w-full p-2 border rounded bg-gray-200 cursor-not-allowed"
           readOnly
+          value={user?.displayName}
+          name='name'
         />
         <button
           type="submit"

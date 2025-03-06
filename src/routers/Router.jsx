@@ -9,6 +9,7 @@ import MyCampaigns from "../layout/MyCampaign/MyCampaigns";
 import MyDonations from "../layout/MyDonations/MyDonations";
 import AllCampaigns from "../layout/AllCampaigns/AllCampaigns";
 import UpdateCampaign from "../layout/UpdateCampaign/UpdateCampaign";
+import Details from "../layout/Details/Details";
 
 
 export  const router = createBrowserRouter([
@@ -44,8 +45,18 @@ export  const router = createBrowserRouter([
             }
             ,
             {
+                path:'all-campaigns',
+                element:<AllCampaigns></AllCampaigns>
+            }
+            ,
+            {
                 path:'updateCampaign/:id',
                 element:<PrivetRouter><UpdateCampaign></UpdateCampaign></PrivetRouter>
+            }
+            ,
+            {
+                path:'details/:id',
+                element:<PrivetRouter><Details></Details></PrivetRouter>
             }
         ]
     }

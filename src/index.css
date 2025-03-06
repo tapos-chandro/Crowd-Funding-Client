@@ -1,12 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
-
-
-
-
 @theme {
-    --font-jost: "Jost", sans-serif;
+  --font-jost: "Jost", sans-serif;
+}
 
-  }
+.active{
+  text-decoration: underline;
+}

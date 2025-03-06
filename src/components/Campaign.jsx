@@ -1,20 +1,25 @@
+import { Link } from "react-router-dom";
+
 const Campaign = ({ campaign }) => {
-  const { title, description, image, raised, goal } = campaign;
+  const {   _id,image,title,type,description,minDonation } = campaign;
+
+
+  
+
+
 
   return (
     <div className="card bg-base-100 rounded-none  shadow-sm grow">
       <figure>
-        <img src={image} className="p-5" alt={title} />
+        <img src={image} className="p-5 w-full" alt={title} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
+        <h2 className="text-md text-gray-500 font-bold">{type}</h2>
         <p>{description}</p>
-        <p>
-          <span>${raised}</span>raised of $<span>{goal}</span>
-        </p>
+        <p>Price: ${minDonation}</p>
         <div className="card-actions justify-between">
-          <button className="btn bg-red-500 text-white">Donate Now</button>
-          <button className="btn btn-primary">See More...</button>
+          <Link to={`/details/${_id}`} className="w-full"><button  className="btn btn-primary w-full">See More...</button></Link>
         </div>
       </div>
     </div>
