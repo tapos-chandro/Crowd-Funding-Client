@@ -30,7 +30,7 @@ const MyCampaigns = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         setCampaigns(campaigns.filter((campaign) => campaign._id !== id));
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://crowd-funding-server-iota.vercel.app/delete/${id}`, {
           method: 'DELETE'
         })
         .then(res => res.json())
@@ -57,14 +57,14 @@ const MyCampaigns = () => {
 
 
   useEffect( () => {
-    fetch(`http://localhost:5000/myCampaign/${user.email}`)
+    fetch(`https://crowd-funding-server-iota.vercel.app/myCampaign/${user.email}`)
     .then(res => res.json())
     .then(data => setCampaigns(data))
 
   }, [])
 
   return (
-    <div className="container mx-auto p-5 py-28">
+    <div className="container mx-auto p-5 py-10">
       <h2 className="text-3xl font-semibold mb-6 text-center">My Campaigns</h2>
       {campaigns.length > 0 ?<div className="overflow-x-auto">
         <table className="w-full border-collapse ">

@@ -1,10 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthProvider"; // Ensure the correct path
-
+import { FaUser } from "react-icons/fa";
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout} = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false); // State for mobile menu
+
 
 
   return (
@@ -45,14 +46,13 @@ const Navbar = () => {
             </>
           ) : (
             <div className="relative group flex ">
-              <img
-                src={user.photoURL }
-                alt="User Avatar"
+              {user.photoURL && <img
+                src={user?.photoURL ? user.photoURL:<FaUser/> }
                 className="w-10 h-10 rounded-full cursor-pointer"
-              />
+              />}
               <div className="absolute hidden group-hover:block bg-white text-black px-4 py-2 rounded shadow-md top-12 left-0">
-                <p>{user.displayName || "User"}</p>
-                <p>{user.email || "Email"}</p>
+                <p>{user?.displayName || "User"}</p>
+                <p>{user?.email}</p>
               </div>
               <button onClick={logout} className="ml-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:cursor-pointer">Log out</button>
             </div>
@@ -81,13 +81,13 @@ const Navbar = () => {
             </>
           ) : (
             <div className="relative group  flex flex-col justify-center items-center   space-y-2">
-              <img
-                src={user.photoURL || "/default-avatar.png"}
+             {user.photoURL &&  <img
+                src={user?.photoURL}
                 alt="User Avatar"
                 className="w-10 h-10 rounded-full cursor-pointer"
-              />
+              />}
               <div className="absolute hidden group-hover:block bg-white text-black px-4 py-2 rounded shadow-md top-12 left-0">
-                {user.displayName || "User"}
+                {user?.displayName}
               </div>
               <button onClick={logout} className=" bg-red-500 text-white  w-full py-2 rounded-lg">Log out</button>
             </div>

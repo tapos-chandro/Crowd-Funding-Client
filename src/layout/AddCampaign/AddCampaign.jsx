@@ -26,7 +26,7 @@ const time = moment().format('LT')
 
 
 
-    fetch('http://localhost:5000/campaign', {
+    fetch('https://crowd-funding-server-iota.vercel.app/campaign', {
       method:'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const time = moment().format('LT')
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white rounded shadow-md mt-20">
+    <div className="max-w-lg mx-auto p-6 bg-white rounded shadow-md mt-5">
       <h2 className="text-2xl font-semibold mb-4 text-center">Add New Campaign</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

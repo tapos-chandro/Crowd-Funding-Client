@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser, googleLoginUser } = useContext(AuthContext);
+  const { signInUser, googleLoginUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,8 +13,7 @@ const Login = () => {
     const password = form.password.value;
 
     try {
-      await signInUser(email, password);
-
+    await signInUser(email, password);
       toast.success("Login successful!");
       navigate("/");
     } catch (error) {

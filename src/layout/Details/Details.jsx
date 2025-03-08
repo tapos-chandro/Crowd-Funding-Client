@@ -29,7 +29,7 @@ const Details = () => {
       deadline: details?.deadline,
     };
 
-    fetch(`http://localhost:5000/donates`, {
+    fetch(`https://crowd-funding-server-iota.vercel.app/donates`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'}, 
       body: JSON.stringify(donateData)
@@ -49,7 +49,7 @@ const Details = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/details/${id}`)
+    fetch(`https://crowd-funding-server-iota.vercel.app/details/${id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, []);

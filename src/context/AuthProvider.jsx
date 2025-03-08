@@ -10,8 +10,10 @@ import { auth } from "../firebase/firebase.config";
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading , setLoading] = useState(true)
+    const [userPhoto , setUserPhoto] = useState('')
     const googleProvider = new GoogleAuthProvider();
 
+    console.log(userPhoto)
 
     const registerNewUser = (email, password) => {
         setLoading(true)
@@ -20,9 +22,9 @@ const AuthProvider = ({children}) => {
 
     const updateUserProfile = (name, photoURL) => {
         setLoading(true)
-        return updateProfile(auth.currentUser, {
-            displayName: name, photoURL:photoURL
-          })
+        return updateProfile(auth.currentUser, { displayName: name, photoURL }).then(() => {
+            setUser({ ...auth.currentUser, displayName: name, photoURL });
+          });
     }
 
     const signInUser = (email, password) => {
@@ -45,6 +47,7 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 setUser(currentUser)
                 setLoading(false)
+                setUserPhoto(currentUser.photoURL)
             }else{
                 setUser(null)
                 setLoading(false)
@@ -65,7 +68,8 @@ const AuthProvider = ({children}) => {
         signInUser,
         loading,
         googleLoginUser,
-        logout
+        logout,
+        userPhoto
     }
 
     return (

@@ -1,12 +1,37 @@
-# React + Vite
+# My Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Site URL
+[Visit the Live Site](https://helpful-mooncake-cfc5b8.netlify.app/)
 
-Currently, two official plugins are available:
+## Features
+- 🔐 **User Authentication** - Register, login, and manage your profile securely.
+- 🖼️ **Profile Picture Support** - Upload and display your profile image dynamically.
+- ⚡ **Real-time Updates** - Navbar updates instantly with user information.
+- 🎨 **Responsive Design** - Fully optimized for desktop and mobile devices.
+- 🚀 **Smooth Navigation** - Seamless transitions between pages for a great user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React.js
+- Firebase Authentication
+- React Router
+- Tailwind CSS
+- React Toastify
+- sweetalert2
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Setup Instructions
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/your-repo.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd your-repo
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Run the development server:
+   ```sh
+   npm start
+   ```

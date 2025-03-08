@@ -5,14 +5,14 @@ const AllCampaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allCampaign")
+    fetch("https://crowd-funding-server-iota.vercel.app/allCampaign")
       .then((res) => res.json())
       .then((data) => setCampaigns(data));
   }, []);
 
 
   return (
-    <div className="container mx-auto p-5 pt-24">
+    <div className="container mx-auto p-5 pt-10">
       <h1 className="text-center text-2xl font-bold pb-9">All Campaign</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-200 bg-white text-gray-700 shadow-md">

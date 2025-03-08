@@ -13,7 +13,7 @@ const RunningCampaigns = () => {
   
   useEffect(() => {
 
-    fetch('http://localhost:5000/runningCampaign')
+    fetch('https://crowd-funding-server-iota.vercel.app/runningCampaign')
     .then(res => res.json())
     .then(data =>{ 
       setCampaigns(data)

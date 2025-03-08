@@ -10,14 +10,14 @@ const MyDonations = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myDonated/${user?.email}`)
+    fetch(`https://crowd-funding-server-iota.vercel.app/myDonated/${user?.email}`)
     .then(res => res.json())
     .then(data => setCampaigns(data))
     setLoading(false)
   }, [])
 
   return (
-    <div className="container mx-auto p-4 py-28">
+    <div className="container mx-auto p-4 py-10">
       <h1 className="text-2xl font-bold mb-4 text-center">My Donated Campaigns</h1>
 
       {loading ? (

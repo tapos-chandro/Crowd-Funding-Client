@@ -27,7 +27,7 @@ const UpdateCampaign = () => {
     const updateData = {email, name, title, type, description, minDonation, deadline, image}
 
 try {
-  fetch(`http://localhost:5000/updateCampaign/${params?.id}`, {
+  fetch(`https://crowd-funding-server-iota.vercel.app/updateCampaign/${params?.id}`, {
     method: 'PATCH',
     headers: {
       "Content-Type": "application/json"
@@ -56,7 +56,7 @@ try {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/updateCampaign/${params.id}`)
+    fetch(`https://crowd-funding-server-iota.vercel.app/updateCampaign/${params.id}`)
     .then( res => res.json())
     .then(data => seCampaign(data))
   }, []);

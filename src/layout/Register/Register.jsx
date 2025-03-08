@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { registerNewUser, updateUserProfile } = useContext(AuthContext);
+  const { registerNewUser, updateUserProfile} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
