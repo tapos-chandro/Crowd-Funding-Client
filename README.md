@@ -1,4 +1,4 @@
-# My Website
+# Crow Funding Project
 
 ## Live Site URL
 [Visit the Live Site](https://helpful-mooncake-cfc5b8.netlify.app/)
@@ -21,7 +21,7 @@
 ## Setup Instructions
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/your-repo.git
+   git clone gh repo clone tapos-chandro/Crowd-Funding-Client
    ```
 2. Navigate to the project directory:
    ```sh
